@@ -1,0 +1,31 @@
+main section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    width: 18em;
+    margin: 3em 0 0 1em;
+}
+
+.product_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product_info p {
+    margin: 0;
+    margin-right: 3em;
+}
+
+.product_info span {
+    display: flex;
+    align-items: flex-end;
+}
