@@ -7,8 +7,13 @@ fetch(camerasUrl)
   
     //creer l'element section
     let products = document.createElement("section")
+    products.setAttribute("id", "products")
     products.classList.add("container")
     document.querySelector("main").appendChild(products)
+    
+    // let productsTitle = document.createElement("h2")
+    // products.appendChild(productsTitle)
+    // productsTitle.textContent = "Nos produits"
 
     for (let cameras of data) {
       //creer et ajoute les elements article dans la section
@@ -21,7 +26,7 @@ fetch(camerasUrl)
       productImage.classList.add("product_img")
       product.appendChild(productImage)
       //ajoute l'image dans la balise img
-      //productImage.innerHTML = cameras.imageUrl
+      productImage.src = cameras.imageUrl
 
       //creer et ajoute les elements h2 dans chaque article
       let productTitle = document.createElement("h2")
@@ -45,7 +50,6 @@ fetch(camerasUrl)
       let productPrice = document.createElement("span")
       productInfo.appendChild(productPrice)
       //ajoute le prix dans la balise span
-      productPrice.textContent = cameras.price
-
+      productPrice.textContent = cameras.price + "€"
     }
-  })
+  }).catch((error) => console.log('Erreur: ' + error))
