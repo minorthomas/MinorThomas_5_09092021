@@ -2,54 +2,58 @@ let camerasUrl = 'http://localhost:3000/api/cameras'
 
 fetch(camerasUrl)
   .then((response) => response.json())
-  .then((data) => {
-    console.log(data)
+  .then((cameras) => {
+    console.log(cameras)
   
     //creer l'element section
-    let products = document.createElement("section")
+    let products = document.createElement("div")
     products.setAttribute("id", "products")
     products.classList.add("container")
     document.querySelector("main").appendChild(products)
-    
-    // let productsTitle = document.createElement("h2")
-    // products.appendChild(productsTitle)
-    // productsTitle.textContent = "Nos produits"
 
-    for (let cameras of data) {
+    for (let camera of cameras) {
       //creer et ajoute les elements article dans la section
       let product = document.createElement("article")
       product.classList.add("product")
       products.appendChild(product)
 
+      let productLink = document.createElement("a")
+      let Url = camera._id      
+      productLink.setAttribute("href", `./pages/product.html?id=${Url}`)
+      productLink.classList.add("product_link")
+      product.appendChild(productLink)
+      
+
       //creer et ajoute les elements img dans chaque article
       let productImage = document.createElement("img")
+      productImage.setAttribute("alt", "Appareil photo")
       productImage.classList.add("product_img")
-      product.appendChild(productImage)
+      productLink.appendChild(productImage)
       //ajoute l'image dans la balise img
-      productImage.src = cameras.imageUrl
+      productImage.src = camera.imageUrl
 
       //creer et ajoute les elements h2 dans chaque article
       let productTitle = document.createElement("h2")
       productTitle.classList.add("product_title")
-      product.appendChild(productTitle)
+      productLink.appendChild(productTitle)
       //ajoute le nom dans la balise h2
-      productTitle.textContent = cameras.name
+      productTitle.textContent = camera.name
 
       //creer et ajoute les elements p et span dans chaque article
       let productInfo= document.createElement("div")
       productInfo.classList.add("product_info")
-      product.appendChild(productInfo)
+      productLink.appendChild(productInfo)
 
       //creer et ajoute les elements p dans chaque article
       let productDescription = document.createElement("p")
       productInfo.appendChild(productDescription)
       //ajoute la description dans la balise p
-      productDescription.textContent = cameras.description
+      productDescription.textContent = camera.description
 
       //creer et ajoute les elements span dans chaque article
       let productPrice = document.createElement("span")
       productInfo.appendChild(productPrice)
       //ajoute le prix dans la balise span
-      productPrice.textContent = cameras.price + "€"
+      productPrice.textContent = camera.price + "€"
     }
   }).catch((error) => console.log('Erreur: ' + error))

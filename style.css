@@ -1,3 +1,8 @@
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 #products {
     display: flex;
     flex-direction: row;
@@ -10,7 +15,7 @@
 .product {
     display: flex;
     flex-direction: column;
-    margin: 3em 0 0 1em;
+    margin: 3em 0 0 0;
     background-color: rgb(235, 235, 235);
     padding: 1em;
     border: solid 0.15em rgb(230, 229, 229);
