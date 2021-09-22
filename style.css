@@ -3,6 +3,11 @@ a {
     text-decoration: none;
 }
 
+a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
 #products {
     display: flex;
     flex-direction: row;
