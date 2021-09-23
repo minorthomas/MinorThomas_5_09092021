@@ -21,11 +21,12 @@ fetch(cameraUrl)
 
 })
 
+
 function addCameraInDom (camera) {
   let products = document.createElement("div")
   products.setAttribute("id", "products")
   products.classList.add("container")
-  document.querySelector("main").appendChild(products)
+  document.querySelector("#product").appendChild(products)
 
   let product = document.createElement("article")
   product.classList.add("product")
@@ -121,7 +122,7 @@ function addCameraInDom (camera) {
     let choiceQuantity = idQuantity.value
 
     //Recupere les valeurs du formulaire
-    let addProductBasket = {
+    addProductBasket = {
       name: camera.name,
       id: camera._id,
       lenses: choiceLenses,
@@ -129,6 +130,19 @@ function addCameraInDom (camera) {
       price: camera.price * choiceQuantity / 100 + "€"
     }
     console.log(addProductBasket)
+
+    //----------------Localstorage
+    let productLocalStorage = JSON.parse(localStorage.getItem("cameraBasket"))
+
+    //Si il y a déjà la key dans le local storage
+    if (productLocalStorage) {
+      productLocalStorage.push(addProductBasket)
+      localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+    } else {
+      productLocalStorage = []
+      productLocalStorage.push(addProductBasket)
+      localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+    }
   })
 }
 

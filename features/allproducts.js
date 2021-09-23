@@ -10,7 +10,7 @@ fetch(camerasUrl)
       let products = document.createElement("div")
       products.setAttribute("id", "products")
       products.classList.add("container")
-      document.querySelector("main").appendChild(products)
+      document.querySelector("#products").appendChild(products)
 
     
       for (let camera of cameras) {
