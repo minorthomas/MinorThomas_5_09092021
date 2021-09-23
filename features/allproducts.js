@@ -51,7 +51,7 @@ fetch(camerasUrl)
         let productPrice = document.createElement("span")
         productInfo.appendChild(productPrice)
         //ajoute le prix dans la balise span
-        productPrice.textContent = camera.price + "€"
+        productPrice.textContent = camera.price / 100 + "€"
 
       }
     }
