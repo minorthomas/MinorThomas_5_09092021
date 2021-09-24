@@ -17,7 +17,7 @@ a:hover{
     margin-right: auto;
 }
 
-.product {
+.product, #basket_summary {
     display: flex;
     flex-direction: column;
     margin: 3em 0 0 0;

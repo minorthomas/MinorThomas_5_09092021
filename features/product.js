@@ -21,8 +21,7 @@ fetch(cameraUrl)
 
 })
 
-
-function addCameraInDom (camera) {
+const addCameraInDom = (camera) => {
   let products = document.createElement("div")
   products.setAttribute("id", "products")
   products.classList.add("container")
