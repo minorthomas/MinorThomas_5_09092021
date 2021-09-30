@@ -1,55 +1,51 @@
 let productLocalStorage = JSON.parse(localStorage.getItem("cameraBasket"))
-console.log(productLocalStorage)
 
 const basketDom = () => {
-    //Creation de la section qui englobe le RECAPITULATIF du panier
-    let basketSummary = document.createElement("section")
-    basketSummary.setAttribute("id", "basket_summary")
-    basketSummary.classList.add("container")
-    document.querySelector("#basket").appendChild(basketSummary)
-
-    //Creation du titre du panier
-    let basketTitle = document.createElement("h2")
-    basketTitle.textContent = "Détails de la commande"
-    basketSummary.appendChild(basketTitle)
-
+    
     //Creation du si le localStorage est vide, affiché "panier vide" sinon afficher la boucle for et les articles
     if (productLocalStorage === null) {
         let basketEmpty = document.createElement("p")
         basketEmpty.setAttribute("id", "basket_empty")
         basketEmpty.textContent = "Votre panier est vide"
-        basketSummary.appendChild(basketEmpty)
+        document.querySelector("#basket_summary").appendChild(basketEmpty)
     } else {
         for (let i = 0; i < productLocalStorage.length; i++) {
             let basketArticle = document.createElement("article")
-            basketSummary.appendChild(basketArticle)
+            document.querySelector("#basket_summary").appendChild(basketArticle)
     
             //Creation de la div qui englobe les details du panier
             let basketProducts = document.createElement("div")
-            basketProducts.classList.add("basketDetails")
+            basketProducts.classList.add("basket_products")
             basketArticle.appendChild(basketProducts)
 
             //Creation du paragraphe principal qui englobe l'article + quantité + prix
             let basketFirstProduct = document.createElement("p")
             basketFirstProduct.classList.add("basket_first_product")
-            basketFirstProduct.textContent = productLocalStorage.price
-
-            let basketProductPrice = document.createElement("span")
-            basketProductPrice.classList.add("basket_product_price")
-
-            basketProducts.appendChild(basketFirstProduct)
-            basketProducts.appendChild(basketProductPrice)
+            basketProducts.appendChild(basketFirstProduct)            
+            basketFirstProduct.textContent = "Article: " + "Appareil photo " + productLocalStorage[i].name
 
             //Creation du paragraphe secondaire qui englobe l'article secondaire
             let basketSecondProduct = document.createElement("p")
             basketSecondProduct.classList.add("basket_second_product")
             basketProducts.appendChild(basketSecondProduct)
+            basketSecondProduct.textContent = "Lentille: " + productLocalStorage[i].lenses
+
+            //Creation du div pour le prix
+            let basketProductPrice = document.createElement("div")
+            basketProductPrice.classList.add("basket_product_price")
+            basketArticle.appendChild(basketProductPrice)            
+            basketProductPrice.textContent = productLocalStorage[i].price
+
+            let basketRemoveArticle = document.createElement("div")
+            basketRemoveArticle.classList.add("basket_clean")
+            basketArticle.appendChild(basketRemoveArticle)
+            basketRemoveArticle.textContent = "Supprimer l'article"
         }
 
         //creation du footer qui englobe le prix total + vider le panier complétement
         let basketFooter = document.createElement("footer")
         basketFooter.setAttribute("id", "basket_footer")
-        basketSummary.appendChild(basketFooter)
+        document.querySelector("#basket_summary").appendChild(basketFooter)
 
         //Creation paragraphe prix total du panier
         let basketPriceAll = document.createElement("p")

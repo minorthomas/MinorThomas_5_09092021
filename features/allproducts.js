@@ -57,5 +57,7 @@ const addCamerasInDom = (cameras) => {
     //ajoute le prix dans la balise span
     productPrice.textContent = camera.price / 100 + "€"
 
+
+
   }
 }

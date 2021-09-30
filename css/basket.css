@@ -1,0 +1,48 @@
+*, *::before, *::after{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+}
+
+#navbar, body{
+    background-color: rgb(240, 242, 255);
+}
+
+#separation {
+    content: '';
+    padding: 1.6em;  
+    background-color: rgb(110, 118, 150);
+    margin: 0 0 3em 0;
+}
+
+main{
+    border: 0.1em solid rgb(110, 118, 150);
+    border-radius: 0.75em;
+    background-color: white;
+}
+
+#basket_summary article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.basket_products{
+    display: flex;
+    flex-direction: column;
+}
+
+.basket_product_price, .basket_clean {
+    display: flex;
+    align-items: center;
+}
+
+#basket_footer{
+    background-color: rgb(110, 118, 150);
+    border: 0 solid transparent;
+    border-radius: 0 0 0.65em 0.65em;
+}
