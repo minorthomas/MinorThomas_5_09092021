@@ -11,7 +11,7 @@ body{
     background-color: rgb(240, 242, 255);
 }
 
-#separation {
+#body_separation {
     content: '';
     padding: 1.6em;  
     background-color: rgb(110, 118, 150);
@@ -45,4 +45,19 @@ main{
     background-color: rgb(110, 118, 150);
     border: 0 solid transparent;
     border-radius: 0 0 0.65em 0.65em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.4em;
+}
+
+.product_separation {
+    content: '';
+    padding: 0.01em;  
+    background-color: rgb(110, 118, 150);
+    margin-top: 0.4em;
+    margin-bottom: 0.7em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }

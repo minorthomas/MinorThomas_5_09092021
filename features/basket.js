@@ -40,27 +40,29 @@ const basketDom = () => {
             basketRemoveArticle.classList.add("basket_clean")
             basketArticle.appendChild(basketRemoveArticle)
             basketRemoveArticle.textContent = "Supprimer l'article"
+
+            let productSeparation = document.createElement("div")
+            productSeparation.classList.add("product_separation")
+            document.querySelector("#basket_summary").appendChild(productSeparation)
         }
+    }
+    if (productLocalStorage === null){
+        let totalPriceBasket = document.querySelector("#basket_total_price")
+        totalPriceBasket.textContent = "0"
+        console.log(totalPriceBasket)
 
-        //creation du footer qui englobe le prix total + vider le panier complétement
-        let basketFooter = document.createElement("footer")
-        basketFooter.setAttribute("id", "basket_footer")
-        document.querySelector("#basket_summary").appendChild(basketFooter)
-
-        //Creation paragraphe prix total du panier
-        let basketPriceAll = document.createElement("p")
-        basketPriceAll.setAttribute("id", "basket_price_all")
-        basketFooter.appendChild(basketPriceAll)
-
-        //Creation div vider le panier
-        let basketCleanAll = document.createElement("div")
-        basketCleanAll.setAttribute("id", "basket_clean_all")
-        basketFooter.appendChild(basketCleanAll)
+    } else {
+        for (let i = 0; i < productLocalStorage[i].price.length; i++) {
+            let sum = 0
+            sum += productLocalStorage[i].price
+            console.log(sum)
+        } 
     }
 }
 
-//section -> h2, article,
-//boucle for (pour l'article -> div details, p article principal, p article secondaire, span prix)
-//pour la div -> span prix total, div vider le panier
+//recuperer le span prix
+//recuperer tous les prix des objets
+//additionner tous les prix
+//afficher les prix
 
 basketDom()
