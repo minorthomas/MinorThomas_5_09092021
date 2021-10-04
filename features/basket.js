@@ -87,7 +87,7 @@ const clearAllProduct = () => {
     let clearAllButton = document.querySelector("#clear_all_products")
 
     clearAllButton.addEventListener("click", (e) => {
-        localStorage.clear()
+        localStorage.removeItem("cameraBasket")
         location.reload()
     })
     
