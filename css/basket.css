@@ -1,13 +1,13 @@
-*, *::before, *::after{
+*, *::before, *::after {
 	box-sizing: border-box;
 }
 
-body{
+body {
 	margin: 0;
 	padding: 0;
 }
 
-#navbar, body{
+#navbar, body {
     background-color: rgb(240, 242, 255);
 }
 
@@ -18,8 +18,8 @@ body{
     margin: 0 0 3em 0;
 }
 
-main{
-    border: 0.1em solid rgb(110, 118, 150);
+main {
+    border: solid 0.15em rgb(230, 229, 229);
     border-radius: 0.75em;
     background-color: white;
 }
@@ -31,7 +31,7 @@ main{
     margin: auto;
 }
 
-.basket_products{
+.basket_products {
     display: flex;
     flex-direction: column;
 }
@@ -41,7 +41,7 @@ main{
     align-items: center;
 }
 
-#basket_footer{
+#basket_footer {
     background-color: rgb(110, 118, 150);
     border: 0 solid transparent;
     border-radius: 0 0 0.65em 0.65em;

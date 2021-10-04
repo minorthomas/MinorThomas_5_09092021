@@ -106,6 +106,8 @@ const addCameraInDom = (camera) => {
   addBasket.textContent = "Ajouter au panier"
   product.appendChild(addBasket)
 
+  
+
 
   //Recupere le bouton "Ajouter au panier" et creer un événement au moment du click
   let addBasketButton = document.querySelector("#product_add_basket")
@@ -128,8 +130,7 @@ const addCameraInDom = (camera) => {
       quantity: choiceQuantity,
       price: camera.price * choiceQuantity / 100 + "€"
     }
-    console.log(addProductBasket)
-
+    
     //----------------Localstorage
     let productLocalStorage = JSON.parse(localStorage.getItem("cameraBasket"))
 
