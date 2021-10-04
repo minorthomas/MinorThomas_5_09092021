@@ -1,5 +1,7 @@
 let productLocalStorage = JSON.parse(localStorage.getItem("cameraBasket"))
 
+
+
 const basketDom = () => {
     
     //Creation du si le localStorage est vide, affiché "panier vide" sinon afficher la boucle for et les articles
@@ -36,8 +38,8 @@ const basketDom = () => {
             basketArticle.appendChild(basketProductPrice)            
             basketProductPrice.textContent = productLocalStorage[i].price
 
-            let basketRemoveArticle = document.createElement("div")
-            basketRemoveArticle.classList.add("basket_clean")
+            let basketRemoveArticle = document.createElement("button")
+            basketRemoveArticle.classList.add("basket_clear")
             basketArticle.appendChild(basketRemoveArticle)
             basketRemoveArticle.textContent = "Supprimer l'article"
 
@@ -46,23 +48,52 @@ const basketDom = () => {
             document.querySelector("#basket_summary").appendChild(productSeparation)
         }
     }
-    if (productLocalStorage === null){
-        let totalPriceBasket = document.querySelector("#basket_total_price")
-        totalPriceBasket.textContent = "0"
-        console.log(totalPriceBasket)
+    // if (productLocalStorage === null){
+    //     let totalPriceBasket = document.querySelector("#basket_total_price")
+    //     totalPriceBasket.textContent = "0"
+    //     console.log(totalPriceBasket)
 
-    } else {
-        for (let i = 0; i < productLocalStorage[i].price.length; i++) {
-            let sum = 0
-            sum += productLocalStorage[i].price
-            console.log(sum)
-        } 
-    }
-}
-
+    // } else {
+    //     for (let i = 0; i < productLocalStorage[i].price.length; i++) {
+    //         let sum = 0
+    //         sum += productLocalStorage[i].price
+    //         console.log(sum)
+    //     } 
+    // }
 //recuperer le span prix
 //recuperer tous les prix des objets
 //additionner tous les prix
 //afficher les prix
+}
+
+//--------------------------------------------
+
+const clearOneProduct = () => {
+    let clearButton = document.querySelectorAll(".basket_clear")
+
+    for (let i = 0; i < clearButton.length; i++) {
+        clearButton[i].addEventListener("click", (e) => {
+            let selectProductId = productLocalStorage[i]
+
+            productLocalStorage = productLocalStorage.filter((element) => element.productLocalStorage !== selectProductId)
+            // location.reload()
+            localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+        })
+    }
+}
+
+//------------------------
+const clearAllProduct = () => {
+    let clearAllButton = document.querySelector("#clear_all_products")
+
+    clearAllButton.addEventListener("click", (e) => {
+        localStorage.clear()
+        location.reload()
+    })
+    
+    
+}
 
 basketDom()
+clearOneProduct()
+clearAllProduct()
