@@ -34,8 +34,7 @@ const basketDom = () => {
             let basketProductPrice = document.createElement("div")
             basketProductPrice.classList.add("basket_product_price")
             basketArticle.appendChild(basketProductPrice)           
-            basketProductPrice.innerHTML = productLocalStorage[i].price
-            // let stringToNumber = parseInt(productLocalStorage[i].price, 10) 
+            basketProductPrice.innerHTML = productLocalStorage[i].price / 100 + "€"
 
             let basketRemoveArticle = document.createElement("button")
             basketRemoveArticle.classList.add("basket_clear")
@@ -50,29 +49,16 @@ const basketDom = () => {
     if (productLocalStorage === null){
         let totalPrice = document.querySelector("#basket_total_price")
         totalPrice.textContent = "0"
-        console.log(totalPrice)
 
     } else {
-        //creer un tableau vide
-        let totalPrice = []
-        let sum = 0
         //creer une boucle qui va permettre de recuperer chaque prix et de les ajouter au tableau
+        let sum = 0
         for (let i = 0; i < productLocalStorage.length; i++) {
-            totalPriceBasket = productLocalStorage[i].price
-
-            totalPrice.push(totalPriceBasket) //ajoute le prix au tableau
+            sum = sum + productLocalStorage[i].price
         }
-
-
-        let stringToNumber = parseInt(totalPrice, 10)
-        console.log(stringToNumber)
-
+        let totalPrice = document.querySelector("#basket_total_price")
+        totalPrice.textContent = sum / 100
     }
-
-//recuperer le span prix
-//recuperer tous les prix des objets
-//additionner tous les prix
-//afficher les prix
 }
 
 //--------------------------------------------
@@ -81,8 +67,8 @@ const clearOneProduct = () => {
     let clearButton = document.querySelectorAll(".basket_clear")
 
     for (let i = 0; i < clearButton.length; i++) {
-        clearButton[i].addEventListener("click", (e) => {
-            let selectProductIndex = productLocalStorage[i]
+        clearButton[i].addEventListener("click", () => {
+            let selectProductIndex = productLocalStorage[i].
             console.log(selectProductIndex)
       
         })
@@ -90,7 +76,7 @@ const clearOneProduct = () => {
 }
 
 //------------------------
-const clearAllProduct = () => {
+const clearAllProducts = () => {
     let clearAllButton = document.querySelector("#clear_all_products")
 
     clearAllButton.addEventListener("click", (e) => {
@@ -101,4 +87,4 @@ const clearAllProduct = () => {
 
 basketDom()
 clearOneProduct()
-clearAllProduct()
+clearAllProducts()

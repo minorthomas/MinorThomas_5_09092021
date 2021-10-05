@@ -26,6 +26,10 @@ main {
     margin-bottom: 5em;
 }
 
+#basket_summary{
+    padding: 1em;
+}
+
 #basket_summary article {
     display: flex;
     flex-direction: row;
