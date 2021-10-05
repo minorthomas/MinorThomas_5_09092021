@@ -46,6 +46,9 @@ const basketDom = () => {
             document.querySelector("#basket_summary").appendChild(productSeparation)
         }
     }
+}
+
+const calculateTotalPrice = () => {
     if (productLocalStorage === null){
         let totalPrice = document.querySelector("#basket_total_price")
         totalPrice.textContent = "0"
@@ -86,5 +89,6 @@ const clearAllProducts = () => {
 }
 
 basketDom()
+calculateTotalPrice()
 clearOneProduct()
 clearAllProducts()
