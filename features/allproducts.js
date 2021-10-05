@@ -6,10 +6,15 @@ fetch(camerasUrl)
 
     addCamerasInDom(cameras)
 
-  }).catch((error) => console.log('Erreur: ' + error))
+  }).catch((error) => {
+    error = document.createElement("div")
+    error.setAttribute("id", "error")
+    error.classList.add("container")
+    document.querySelector("#products").appendChild(error)
+    error.textContent = "Une erreur est survenue, nous ne parvenons pas à communiquer avec le serveur. Vérifiez bien que celui-ci est démarré !"
+  })
 
 const addCamerasInDom = (cameras) => {
-
   //creer l'element section
   let products = document.createElement("div")
   products.setAttribute("id", "products")

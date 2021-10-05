@@ -19,6 +19,12 @@ fetch(cameraUrl)
 
   addCameraInDom(camera)
 
+}).catch((error) => {
+  error = document.createElement("div")
+  error.setAttribute("id", "error")
+  error.classList.add("container")
+  document.querySelector("#product").appendChild(error)
+  error.textContent = "Une erreur est survenue, nous ne parvenons pas à communiquer avec le serveur. Vérifiez bien que celui-ci est démarré !"
 })
 
 const addCameraInDom = (camera) => {
@@ -84,20 +90,6 @@ const addCameraInDom = (camera) => {
     productOptionsLenses.textContent = "Lentille de " + camera.lenses[i]
   }
 
-  
-  //Creation du formulaire qui permet de choisir la quantité de produit voulu
-  let productSelectQuantity = document.createElement("select")
-  productSelectQuantity.setAttribute("name", "product_quantity")
-  productSelectQuantity.setAttribute("id", "product_form_quantity")
-  productFormLenses.appendChild(productSelectQuantity)
-
-  for (let i = 1; i < 100; i++) {
-    let productOptionsQuantity = document.createElement("option")
-    productOptionsQuantity.setAttribute("value", i)
-    productSelectQuantity.appendChild(productOptionsQuantity)
-    productOptionsQuantity.textContent = i
-  }
-
   //Creation du bouton d'envoi au panier
   let addBasket = document.createElement("button")
   addBasket.setAttribute("id", "product_add_basket")
@@ -118,17 +110,12 @@ const addCameraInDom = (camera) => {
     let idLenses = document.querySelector("#product_form_lenses")
     let choiceLenses = idLenses.value
 
-    //Recupere la valeur de la lentille choisie
-    let idQuantity = document.querySelector("#product_form_quantity")
-    let choiceQuantity = idQuantity.value
-
     //Recupere les valeurs du formulaire
     addProductBasket = {
       name: camera.name,
       id: camera._id,
       lenses: choiceLenses,
-      quantity: choiceQuantity,
-      price: camera.price * choiceQuantity / 100 + "€"
+      price: camera.price
     }
     
     //----------------Localstorage

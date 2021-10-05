@@ -19,7 +19,7 @@
         <!--NAVBAR-->
         <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
           <div class="container">
-            <a class="navbar-brand" href="../index.html"><img alt="Logo Orinoco barre de navigation" src="#" width="150" height="40"></a>
+            <a class="navbar-brand" href="../index.html">ORINOCO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,7 +30,7 @@
                   <a class="nav-link" href="../index.html">Accueil</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="pages/basket.html">Panier</a>
+                  <a class="nav-link" href="basket.html">Panier</a>
                 </li>
               </ul>
             </div>
@@ -52,6 +52,36 @@
         <button id="clear_all_products">Vider le panier</button>
       </footer>  
     </main>
+
+    <form class="container">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputFirstName">Prénom</label>
+          <input type="text" class="form-control" placeholder="Jean" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLastName">Nom</label>
+          <input type="text" class="form-control" placeholder="Dupont" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Adresse mail</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="abc1234@mail.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Adresse</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="15 rue des Tulipes" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Ville</label>
+          <input type="text" class="form-control" id="inputCity" placeholder="Paris" required>
+        </div>
+      </div>
+      <button type="submit" class="btn">Finaliser la commande</button>
+    </form>
 </body>
 <script src="/features/basket.js" type="text/javascript"></script>
 </html>

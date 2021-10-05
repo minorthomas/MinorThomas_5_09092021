@@ -77,6 +77,11 @@ a:hover{
     align-items: center;
 }
 
+#error {
+    color: red;
+    font-size: 2em;
+}
+
 @media only screen and (min-width: 992px) {
     #products {
         display: flex;

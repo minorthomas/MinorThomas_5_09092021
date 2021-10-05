@@ -5,6 +5,7 @@
 body {
 	margin: 0;
 	padding: 0;
+    font-family: 'Merriweather', serif;
 }
 
 #navbar, body {
@@ -22,6 +23,7 @@ main {
     border: solid 0.15em rgb(230, 229, 229);
     border-radius: 0.75em;
     background-color: white;
+    margin-bottom: 5em;
 }
 
 #basket_summary article {
@@ -60,4 +62,8 @@ main {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+}
+
+.btn {
+    background-color: rgb(110, 118, 150);
 }
