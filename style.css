@@ -82,6 +82,10 @@ a:hover{
     font-size: 2em;
 }
 
+.btn {
+    background-color: rgb(110, 118, 150);
+}
+
 @media only screen and (min-width: 992px) {
     #products {
         display: flex;

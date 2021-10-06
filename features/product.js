@@ -80,6 +80,7 @@ const addCameraInDom = (camera) => {
   let productSelectLenses = document.createElement("select")
   productSelectLenses.setAttribute("name", "product_lenses")
   productSelectLenses.setAttribute("id", "product_form_lenses")
+  productSelectLenses.classList.add("form-control")
   productFormLenses.appendChild(productSelectLenses)
 
   //Boucle pour afficher toutes les lentilles dans le choix du formulaire
@@ -95,6 +96,7 @@ const addCameraInDom = (camera) => {
   addBasket.setAttribute("id", "product_add_basket")
   addBasket.setAttribute("type", "submit")
   addBasket.setAttribute("name", "product_add_basket")
+  addBasket.classList.add("btn")
   addBasket.textContent = "Ajouter au panier"
   product.appendChild(addBasket)
 

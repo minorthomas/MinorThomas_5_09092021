@@ -71,3 +71,7 @@ main {
 .btn {
     background-color: rgb(110, 118, 150);
 }
+
+.btn-white {
+    background-color: white;
+}

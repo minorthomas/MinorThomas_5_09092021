@@ -37,7 +37,7 @@ const basketDom = () => {
             basketProductPrice.innerHTML = productLocalStorage[i].price / 100 + "€"
 
             let basketRemoveArticle = document.createElement("button")
-            basketRemoveArticle.classList.add("basket_clear")
+            basketRemoveArticle.classList.add("basket_clear", "btn")
             basketArticle.appendChild(basketRemoveArticle)
             basketRemoveArticle.textContent = "Supprimer l'article"
 
@@ -81,6 +81,7 @@ const clearOneProduct = () => {
 //------------------------
 const clearAllProducts = () => {
     let clearAllButton = document.querySelector("#clear_all_products")
+    clearAllButton.classList.add("btn", "btn-white")
 
     clearAllButton.addEventListener("click", (e) => {
         localStorage.removeItem("cameraBasket")
