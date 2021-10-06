@@ -31,10 +31,10 @@ const addCameraInDom = (camera) => {
   let products = document.createElement("div")
   products.setAttribute("id", "products")
   products.classList.add("container")
-  document.querySelector("#product").appendChild(products)
+  document.querySelector("main").appendChild(products)
 
   let product = document.createElement("article")
-  product.classList.add("product")
+  product.setAttribute("id", "product")
   products.appendChild(product)
 
   //creer et ajoute les elements img dans chaque article
@@ -80,7 +80,7 @@ const addCameraInDom = (camera) => {
   let productSelectLenses = document.createElement("select")
   productSelectLenses.setAttribute("name", "product_lenses")
   productSelectLenses.setAttribute("id", "product_form_lenses")
-  productSelectLenses.classList.add("form-control")
+  productSelectLenses.classList.add("form-select")
   productFormLenses.appendChild(productSelectLenses)
 
   //Boucle pour afficher toutes les lentilles dans le choix du formulaire
@@ -90,6 +90,9 @@ const addCameraInDom = (camera) => {
     productSelectLenses.appendChild(productOptionsLenses)
     productOptionsLenses.textContent = "Lentille de " + camera.lenses[i]
   }
+
+  let pageTitle = document.querySelector('title')
+  pageTitle.textContent = "Orinoco - " + camera.name
 
   //Creation du bouton d'envoi au panier
   let addBasket = document.createElement("button")

@@ -47,6 +47,10 @@ main {
     align-items: center;
 }
 
+.basket_total {
+    align-self: center;
+}
+
 #basket_footer {
     background-color: rgb(110, 118, 150);
     border: 0 solid transparent;
