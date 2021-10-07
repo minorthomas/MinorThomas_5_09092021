@@ -70,13 +70,22 @@ const clearOneProduct = () => {
     let clearButton = document.querySelectorAll(".basket_clear")
 
     for (let i = 0; i < clearButton.length; i++) {
-        clearButton[i].addEventListener("click", () => {
-            let selectProductIndex = productLocalStorage[i].
-            console.log(selectProductIndex)
-      
+        clearButton[i].addEventListener("click", (event) => {
+
+            console.log(i)
+        
+            // console.log(productRemove)
+
+            // location.reload()
         })
     }
 }
+
+//recuperer les boutons supprimer article
+//sur chaque bouton doit avoir l'id de l'article
+//au moment du clic le bouton reconnai l'id de l'article 
+//après le clic supprimer l'article
+//renvoyer le code dans le localstorage pour quil retire completement l'article
 
 //------------------------
 const clearAllProducts = () => {

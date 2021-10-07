@@ -103,9 +103,6 @@ const addCameraInDom = (camera) => {
   addBasket.textContent = "Ajouter au panier"
   product.appendChild(addBasket)
 
-  
-
-
   //Recupere le bouton "Ajouter au panier" et creer un événement au moment du click
   let addBasketButton = document.querySelector("#product_add_basket")
   addBasketButton.addEventListener("click", (event) => {  //Ecoute le bouton "Ajouter au panier"
