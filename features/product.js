@@ -108,6 +108,9 @@ const addCameraInDom = (camera) => {
   addBasketButton.addEventListener("click", (event) => {  //Ecoute le bouton "Ajouter au panier"
     event.preventDefault()
 
+    addBasket.innerHTML = "Article ajouté"
+    addBasket.style.backgroundColor = "rgb(111, 252, 3)"
+
     //Recupere la valeur de la lentille choisie
     let idLenses = document.querySelector("#product_form_lenses")
     let choiceLenses = idLenses.value

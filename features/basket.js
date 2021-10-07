@@ -1,13 +1,18 @@
 let productLocalStorage = JSON.parse(localStorage.getItem("cameraBasket"))
+const basketEmpty = () => {
+    let basketEmpty = document.createElement("p")
+    basketEmpty.setAttribute("id", "basket_empty")
+    basketEmpty.textContent = "Votre panier est vide"
+    document.querySelector("#basket_summary").appendChild(basketEmpty)
+}
+
+//---------------------------------------
 
 const basketDom = () => {
     
     //Creation du si le localStorage est vide, affiché "panier vide" sinon afficher la boucle for et les articles
     if (productLocalStorage === null) {
-        let basketEmpty = document.createElement("p")
-        basketEmpty.setAttribute("id", "basket_empty")
-        basketEmpty.textContent = "Votre panier est vide"
-        document.querySelector("#basket_summary").appendChild(basketEmpty)
+        basketEmpty()
     } else {
         for (let i = 0; i < productLocalStorage.length; i++) {
             let basketArticle = document.createElement("article")
@@ -48,6 +53,8 @@ const basketDom = () => {
     }
 }
 
+//-----------------------------------
+
 const calculateTotalPrice = () => {
     if (productLocalStorage === null){
         let totalPrice = document.querySelector("#basket_total_price")
@@ -70,10 +77,7 @@ const clearOneProduct = () => {
     let clearButton = document.querySelectorAll(".basket_clear")
     console.log(clearButton)
     if (clearButton.length === 0) {
-        let basketEmpty = document.createElement("p")
-        basketEmpty.setAttribute("id", "basket_empty")
-        basketEmpty.textContent = "Votre panier est vide"
-        document.querySelector("#basket_summary").appendChild(basketEmpty)
+        basketEmpty()
     } else {
         for (let i = 0; i < clearButton.length; i++) {
                 clearButton[i].addEventListener("click", (event) => {
@@ -87,13 +91,8 @@ const clearOneProduct = () => {
     }
 }
 
-//recuperer les boutons supprimer article
-//sur chaque bouton doit avoir l'id de l'article
-//au moment du clic le bouton reconnai l'id de l'article 
-//après le clic supprimer l'article
-//renvoyer le code dans le localstorage pour quil retire completement l'article
-
 //------------------------
+
 const clearAllProducts = () => {
     let clearAllButton = document.querySelector("#clear_all_products")
     clearAllButton.classList.add("btn", "btn-white")
@@ -103,6 +102,8 @@ const clearAllProducts = () => {
         location.reload()
     })
 }
+
+//------------------------
 
 basketDom()
 calculateTotalPrice()
