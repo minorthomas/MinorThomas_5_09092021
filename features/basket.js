@@ -68,16 +68,22 @@ const calculateTotalPrice = () => {
 
 const clearOneProduct = () => {
     let clearButton = document.querySelectorAll(".basket_clear")
+    console.log(clearButton)
+    if (clearButton.length === 0) {
+        let basketEmpty = document.createElement("p")
+        basketEmpty.setAttribute("id", "basket_empty")
+        basketEmpty.textContent = "Votre panier est vide"
+        document.querySelector("#basket_summary").appendChild(basketEmpty)
+    } else {
+        for (let i = 0; i < clearButton.length; i++) {
+                clearButton[i].addEventListener("click", (event) => {
 
-    for (let i = 0; i < clearButton.length; i++) {
-        clearButton[i].addEventListener("click", (event) => {
+                productLocalStorage.splice(i, 1)
+                localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
 
-            console.log(i)
-        
-            // console.log(productRemove)
-
-            // location.reload()
-        })
+                location.reload()
+            })
+        }
     }
 }
 
