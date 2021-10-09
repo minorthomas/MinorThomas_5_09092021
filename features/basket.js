@@ -75,19 +75,15 @@ const calculateTotalPrice = () => {
 
 const clearOneProduct = () => {
     let clearButton = document.querySelectorAll(".basket_clear")
-    console.log(clearButton)
-    if (clearButton.length === 0) {
-        basketEmpty()
-    } else {
-        for (let i = 0; i < clearButton.length; i++) {
-                clearButton[i].addEventListener("click", (event) => {
 
-                productLocalStorage.splice(i, 1)
-                localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+    for (let i = 0; i < clearButton.length; i++) {
+            clearButton[i].addEventListener("click", (event) => {
 
-                location.reload()
-            })
-        }
+            productLocalStorage.splice(i, 1)
+            localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+
+            location.reload()
+        })
     }
 }
 
