@@ -101,7 +101,31 @@ const clearAllProducts = () => {
 
 //------------------------
 
+const sendForm = () => {
+    let buttonSendForm = document.querySelector("#button_send_form")
+
+    buttonSendForm.addEventListener("click", (event) => {
+        event.preventDefault()
+
+        localStorage.setItem("firstname", document.querySelector(".firstname").value),
+        localStorage.setItem("name", document.querySelector(".name").value),
+        localStorage.setItem("email", document.querySelector(".email").value),
+        localStorage.setItem("adress", document.querySelector(".adress").value),
+        localStorage.setItem("city", document.querySelector(".city").value)
+      
+        const formValues = {
+            firstname: localStorage.getItem("firstname"),
+            name: localStorage.getItem("name"),
+            email: localStorage.getItem("email"),
+            adress: localStorage.getItem("adress"),
+            city: localStorage.getItem("city")
+        }
+        console.log(formValues)
+    })
+}
+
 basketDom()
 calculateTotalPrice()
 clearOneProduct()
 clearAllProducts()
+sendForm()
