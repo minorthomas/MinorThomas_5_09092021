@@ -29,7 +29,7 @@ fetch(cameraUrl)
 
 const addCameraInDom = (camera) => {
   let products = document.createElement("div")
-  products.setAttribute("id", "products")
+  products.setAttribute("id", "product_container")
   products.classList.add("container")
   document.querySelector("main").appendChild(products)
 

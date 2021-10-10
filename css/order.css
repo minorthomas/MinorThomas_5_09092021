@@ -1,0 +1,29 @@
+main {
+  background-color: white;
+  border: solid 0.15em rgb(230, 229, 229);
+  border-radius: 1.2em;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.15);
+}
+
+#order {
+  padding: 1em;
+}
+
+#order_footer {
+  background-color: rgb(110, 118, 150);
+  border: 0 solid transparent;
+  border-radius: 0 0 0.65em 0.65em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0.4em;
+}
+
+#order_footer a {
+  width: 100%;
+  padding: 0.3em;
+  display: flex;
+  color: white;
+  justify-content: flex-start;
+}
