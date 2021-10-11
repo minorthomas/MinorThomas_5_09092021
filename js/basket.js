@@ -6,7 +6,7 @@ const basketEmpty = () => {
     document.querySelector("#basket_summary").appendChild(basketEmpty)
 }
 
-//---------------------------------------
+//---------------------------------------Ajout dans le DOM
 
 const basketDom = () => {
     
@@ -53,7 +53,7 @@ const basketDom = () => {
     }
 }
 
-//-----------------------------------
+//----------------------------------- Calcul le prix total des articles du panier
 
 const calculateTotalPrice = () => {
     if (productLocalStorage === null){
@@ -71,7 +71,7 @@ const calculateTotalPrice = () => {
     }
 }
 
-//--------------------------------------------
+//-------------------------------------------- Retire un produit du panier
 
 const clearOneProduct = () => {
     let clearButton = document.querySelectorAll(".basket_clear")
@@ -87,7 +87,7 @@ const clearOneProduct = () => {
     }
 }
 
-//------------------------
+//------------------------ Retire tout le panier
 
 const clearAllProducts = () => {
     let clearAllButton = document.querySelector("#clear_all_products")
@@ -99,7 +99,7 @@ const clearAllProducts = () => {
     })
 }
 
-//------------------------
+//------------------------ Envoi le formulaire dans la localstorage
 
 const sendForm = () => {
     let buttonSendForm = document.querySelector("#button_send_form")
@@ -108,7 +108,6 @@ const sendForm = () => {
         event.preventDefault()
 
         //Creer un objet avec toutes les valeurs du formulaire du panier
-
         const contactForm = {
             firstname: document.querySelector(".firstname").value,
             lastname: document.querySelector(".lastname").value,
@@ -117,8 +116,87 @@ const sendForm = () => {
             city: document.querySelector(".city").value
         }
 
-        //Envoi l'objet du formulaire dans le localstorage & le modifie en string pour qu'il s'affiche correctement
-        localStorage.setItem("contact", JSON.stringify(contactForm))
+        //Creer une fonction qui permet de tester des string avec caractères spéciaux
+        const testStringWithSpecialCharacters = (value) => {
+            return /^[A-Za-z\s,éèà.'-]{3,}$/.test(value);
+        }
+
+        //Creer une fonction qui permet de tester lune adresse mail
+        const testEmailAdress = (value) => {
+            return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)
+        }
+
+        const testStringWithNumbers = (value) => {
+            return /^[a-zA-Z0-9\s,éèà.'-]{3,}$/.test(value)
+        }
+
+        //Test toutes les valeurs
+
+        const testFirstName = () => {
+            let firstNameValue = contactForm.firstname
+
+            if (testStringWithSpecialCharacters(firstNameValue)) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        const testLastName = () => {
+            let lastNameValue = contactForm.lastname
+
+            if (testStringWithSpecialCharacters(lastNameValue)) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        const testEmail= () => {
+            let emailValue = contactForm.email
+
+            if (testEmailAdress(emailValue)) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        const testAdress= () => {
+            let adressValue = contactForm.adress
+
+            if (testStringWithNumbers(adressValue)) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        const testCity= () => {
+            let cityValue = contactForm.city
+
+            if (testStringWithSpecialCharacters(cityValue)) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        //Envoi l'objet du formulaire dans le localstorage si celui-ci est bien rempli & le converti en string
+        if (testFirstName() && testLastName() && testEmail() && testAdress() && testCity()) {
+            localStorage.setItem("contact", JSON.stringify(contactForm))
+        } else if (testFirstName() === false) {
+            console.log("Le prénom n'est pas valide")
+        } else if (testLastName() === false) {
+            console.log("Le nom n'est pas valide")
+        } else if (testEmail() === false) {
+            console.log("L'email n'est pas valide")
+        } else if (testAdress() === false) {
+            console.log("L'adresse n'est pas valide")
+        } else if (testCity() === false) {
+            console.log("La ville n'est pas valide")
+        }  
+        
     })
 }
 
