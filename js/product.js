@@ -104,8 +104,8 @@ const addCameraInDom = (camera) => {
   product.appendChild(addBasket)
 
   //Recupere le bouton "Ajouter au panier" et creer un événement au moment du click
-  let addBasketButton = document.querySelector("#product_add_basket")
-  addBasketButton.addEventListener("click", (event) => {  //Ecoute le bouton "Ajouter au panier"
+  let buttonAddToCart = document.querySelector("#product_add_basket")
+  buttonAddToCart.addEventListener("click", (event) => {  //Ecoute le bouton "Ajouter au panier"
     event.preventDefault()
 
     addBasket.innerHTML = "Article ajouté"
@@ -116,7 +116,7 @@ const addCameraInDom = (camera) => {
     let choiceLenses = idLenses.value
 
     //Recupere les valeurs du formulaire
-    addProductBasket = {
+    objectProduct = {
       name: camera.name,
       id: camera._id,
       lenses: choiceLenses,
@@ -124,16 +124,16 @@ const addCameraInDom = (camera) => {
     }
     
     //----------------Localstorage
-    let productLocalStorage = JSON.parse(localStorage.getItem("cameraBasket"))
+    let productLocalStorage = JSON.parse(localStorage.getItem("products"))
 
     //Si il y a déjà la key dans le local storage
     if (productLocalStorage) {
-      productLocalStorage.push(addProductBasket)
-      localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+      productLocalStorage.push(objectProduct)
+      localStorage.setItem("products", JSON.stringify(productLocalStorage))
     } else {
       productLocalStorage = []
-      productLocalStorage.push(addProductBasket)
-      localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+      productLocalStorage.push(objectProduct)
+      localStorage.setItem("products", JSON.stringify(productLocalStorage))
     }
   })
 }

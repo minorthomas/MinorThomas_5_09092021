@@ -1,4 +1,4 @@
-let productLocalStorage = JSON.parse(localStorage.getItem("cameraBasket"))
+let productLocalStorage = JSON.parse(localStorage.getItem("products"))
 const basketEmpty = () => {
     let basketEmpty = document.createElement("p")
     basketEmpty.setAttribute("id", "basket_empty")
@@ -80,7 +80,7 @@ const clearOneProduct = () => {
             clearButton[i].addEventListener("click", (event) => {
 
             productLocalStorage.splice(i, 1)
-            localStorage.setItem("cameraBasket", JSON.stringify(productLocalStorage))
+            localStorage.setItem("products", JSON.stringify(productLocalStorage))
 
             location.reload()
         })
@@ -107,20 +107,18 @@ const sendForm = () => {
     buttonSendForm.addEventListener("click", (event) => {
         event.preventDefault()
 
-        localStorage.setItem("firstname", document.querySelector(".firstname").value),
-        localStorage.setItem("name", document.querySelector(".name").value),
-        localStorage.setItem("email", document.querySelector(".email").value),
-        localStorage.setItem("adress", document.querySelector(".adress").value),
-        localStorage.setItem("city", document.querySelector(".city").value)
-      
-        const formValues = {
-            firstname: localStorage.getItem("firstname"),
-            name: localStorage.getItem("name"),
-            email: localStorage.getItem("email"),
-            adress: localStorage.getItem("adress"),
-            city: localStorage.getItem("city")
+        //Creer un objet avec toutes les valeurs du formulaire du panier
+
+        const contactForm = {
+            firstname: document.querySelector(".firstname").value,
+            lastname: document.querySelector(".lastname").value,
+            email: document.querySelector(".email").value,
+            adress: document.querySelector(".adress").value,
+            city: document.querySelector(".city").value
         }
-        console.log(formValues)
+
+        //Envoi l'objet du formulaire dans le localstorage & le modifie en string pour qu'il s'affiche correctement
+        localStorage.setItem("contact", JSON.stringify(contactForm))
     })
 }
 
