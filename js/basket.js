@@ -192,13 +192,25 @@ const sendForm = () => {
 
         //Envoi l'objet du formulaire dans le localstorage si celui-ci est bien rempli & le converti en string
         if (testFirstName() && testLastName() && testEmail() && testAdress() && testCity()) {
-            // localStorage.setItem("contact", JSON.stringify(contactForm))
+            localStorage.setItem("contact", JSON.stringify(contactForm))
             formError.style.display = "none"
+            //Envoi des données avec fetch() et la requête post vers (http://localhost:3000/api/cameras/order)
+            let orderUrl = "http://localhost:3000/api/cameras/order"
 
+            localStorage.setItem("order", JSON.stringify(order))
 
+            //Méthode "POST" avec fetch()
+            fetch (orderUrl), {
+                method: "POST",
+                body: JSON.stringify(order),
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+            }
 
+            localStorage.removeItem("contact")
+            localStorage.removeItem("products")
 
-            
         } else if (testFirstName() === false) {
             formError.style.display = "flex"
             formError.innerHTML = "Le prénom n'est pas valide"
@@ -216,21 +228,7 @@ const sendForm = () => {
             formError.innerHTML = "La ville n'est pas valide"
         }
 
-        //Envoi des données avec fetch() et la requête post vers (http://localhost:3000/api/cameras/order)
-        // let orderUrl = "http://localhost:3000/api/cameras/order"
-        
 
-        
-        // localStorage.setItem("order", JSON.stringify(order))
-
-        // //Méthode "POST" avec fetch()
-        // fetch (orderUrl), {
-        //     method: "POST",
-        //     body: JSON.stringify(order),
-        //     headers: {
-        //         "Content-Type" : "application/json",
-        //     },
-        // }
         
     })
 }
