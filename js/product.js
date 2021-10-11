@@ -123,10 +123,10 @@ const addCameraInDom = (camera) => {
       price: camera.price
     }
     
-    //----------------Localstorage
+    // //----------------Localstorage
     let productLocalStorage = JSON.parse(localStorage.getItem("products"))
 
-    //Si il y a déjà la key dans le local storage
+    // //Si il y a déjà la key dans le local storage
     if (productLocalStorage) {
       productLocalStorage.push(objectProduct)
       localStorage.setItem("products", JSON.stringify(productLocalStorage))

@@ -127,7 +127,7 @@ const sendForm = () => {
         }
 
         const testStringWithNumbers = (value) => {
-            return /^[a-zA-Z0-9\s,éèà.'-]{3,}$/.test(value)
+            return /^[a-zA-Z0-9\s,éèà.'-]{5,50}$/.test(value)
         }
 
         //Test toutes les valeurs
@@ -182,20 +182,55 @@ const sendForm = () => {
             }
         }
 
+        // Valeur à envoyer à l'api
+        let order = {
+            products: productLocalStorage,
+            contact: contactForm
+        }
+
+        let formError = document.querySelector("#form_error")
+
         //Envoi l'objet du formulaire dans le localstorage si celui-ci est bien rempli & le converti en string
         if (testFirstName() && testLastName() && testEmail() && testAdress() && testCity()) {
-            localStorage.setItem("contact", JSON.stringify(contactForm))
+            // localStorage.setItem("contact", JSON.stringify(contactForm))
+            formError.style.display = "none"
+
+
+
+
+            
         } else if (testFirstName() === false) {
-            console.log("Le prénom n'est pas valide")
+            formError.style.display = "flex"
+            formError.innerHTML = "Le prénom n'est pas valide"
         } else if (testLastName() === false) {
-            console.log("Le nom n'est pas valide")
+            formError.style.display = "flex"
+            formError.innerHTML = "Le nom n'est pas valide"
         } else if (testEmail() === false) {
-            console.log("L'email n'est pas valide")
+            formError.style.display = "flex"
+            formError.innerHTML = "L'email n'est pas valide"
         } else if (testAdress() === false) {
-            console.log("L'adresse n'est pas valide")
+            formError.style.display = "flex"
+            formError.innerHTML = "L'adresse n'est pas valide"
         } else if (testCity() === false) {
-            console.log("La ville n'est pas valide")
-        }  
+            formError.style.display = "flex"
+            formError.innerHTML = "La ville n'est pas valide"
+        }
+
+        //Envoi des données avec fetch() et la requête post vers (http://localhost:3000/api/cameras/order)
+        // let orderUrl = "http://localhost:3000/api/cameras/order"
+        
+
+        
+        // localStorage.setItem("order", JSON.stringify(order))
+
+        // //Méthode "POST" avec fetch()
+        // fetch (orderUrl), {
+        //     method: "POST",
+        //     body: JSON.stringify(order),
+        //     headers: {
+        //         "Content-Type" : "application/json",
+        //     },
+        // }
         
     })
 }
