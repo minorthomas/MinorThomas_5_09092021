@@ -109,16 +109,16 @@ const sendForm = () => {
 
         //Creer un objet avec toutes les valeurs du formulaire du panier
         const contactForm = {
-            firstname: document.querySelector(".firstname").value,
-            lastname: document.querySelector(".lastname").value,
+            firstName: document.querySelector(".firstname").value,
+            lastName: document.querySelector(".lastname").value,
             email: document.querySelector(".email").value,
-            adress: document.querySelector(".adress").value,
+            address: document.querySelector(".adress").value,
             city: document.querySelector(".city").value
         }
 
         //Creer une fonction qui permet de tester des string avec caractères spéciaux
         const testStringWithSpecialCharacters = (value) => {
-            return /^[A-Za-z\s,éèà.'-]{3,}$/.test(value);
+            return /^[A-Za-z\s,éèà.'-]{3,20}$/.test(value);
         }
 
         //Creer une fonction qui permet de tester lune adresse mail
@@ -130,7 +130,7 @@ const sendForm = () => {
             return /^[a-zA-Z0-9\s,éèà.'-]{5,50}$/.test(value)
         }
 
-        //Test toutes les valeurs
+        //Test toutes les valeurs du formulaire
 
         const testFirstName = () => {
             let firstNameValue = contactForm.firstname
@@ -182,7 +182,7 @@ const sendForm = () => {
             }
         }
 
-        // Valeur à envoyer à l'api
+        // Ajout 2 objets dans order 
         let order = {
             products: productLocalStorage,
             contact: contactForm
@@ -192,7 +192,7 @@ const sendForm = () => {
 
         //Envoi l'objet du formulaire dans le localstorage si celui-ci est bien rempli & le converti en string
         if (testFirstName() && testLastName() && testEmail() && testAdress() && testCity()) {
-            localStorage.setItem("contact", JSON.stringify(contactForm))
+            // localStorage.setItem("contact", JSON.stringify(contactForm))
             formError.style.display = "none"
             //Envoi des données avec fetch() et la requête post vers (http://localhost:3000/api/cameras/order)
             let orderUrl = "http://localhost:3000/api/cameras/order"
@@ -200,32 +200,41 @@ const sendForm = () => {
             localStorage.setItem("order", JSON.stringify(order))
 
             //Méthode "POST" avec fetch()
-            fetch (orderUrl), {
+            fetch (orderUrl, {
                 method: "POST",
                 body: JSON.stringify(order),
                 headers: {
+                    "Accept" : "application/json",
                     "Content-Type" : "application/json",
                 },
-            }
+            }).then(function(response) {
+                console.log(response)
+            })
+            .catch(function(error){
+                console.log(error);
+            });
 
+
+
+            //Retire la key contact et products 
             localStorage.removeItem("contact")
             localStorage.removeItem("products")
 
         } else if (testFirstName() === false) {
             formError.style.display = "flex"
-            formError.innerHTML = "Le prénom n'est pas valide"
+            formError.innerHTML = "Le prénom n'est pas valide. 20 caractères maximum!"
         } else if (testLastName() === false) {
             formError.style.display = "flex"
-            formError.innerHTML = "Le nom n'est pas valide"
+            formError.innerHTML = "Le nom n'est pas valide. 20 caractères maximum!"
         } else if (testEmail() === false) {
             formError.style.display = "flex"
             formError.innerHTML = "L'email n'est pas valide"
         } else if (testAdress() === false) {
             formError.style.display = "flex"
-            formError.innerHTML = "L'adresse n'est pas valide"
+            formError.innerHTML = "L'adresse n'est pas valide. 50 caractères maximum!"
         } else if (testCity() === false) {
             formError.style.display = "flex"
-            formError.innerHTML = "La ville n'est pas valide"
+            formError.innerHTML = "La ville n'est pas valide. 20 caractères maximum!"
         }
 
 

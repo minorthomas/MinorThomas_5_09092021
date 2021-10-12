@@ -100,7 +100,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 3em;
-  border: 0 solid red;
+  border: 0 solid transparent;
   border-radius: 0.65em;
   background-color: rgb(255, 137, 137);
   color: white;
