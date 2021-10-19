@@ -20,6 +20,24 @@ main {
   padding: 0.4em;
 }
 
+#order_summary{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 8em;
+  margin-top: 1em;
+}
+
+#order_text{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+#order_id, #order_price{
+  font-weight: bold;
+}
+
 #order_footer a {
   width: 100%;
   padding: 0.3em;

@@ -1,12 +1,3 @@
-//creer une card avec le produit
-//---- recuperer l'id
-//---- recuperer le nom
-//---- recuperer la description
-//---- recuperer le prix
-//---- bouton ajouter au panier 
-//---- bouton choisir objectif
-//---- bouton quantité de produit
-
 let searchUrlParams = window.location.search //Recupère la key id dans l'url
 let getUrlParams = new URLSearchParams(searchUrlParams) 
 let getIdParam = getUrlParams.get("id") //Recupère l'id sans le ?

@@ -108,7 +108,7 @@ const sendForm = () => {
         event.preventDefault()
 
         //Creer un objet avec toutes les valeurs du formulaire du panier
-        const contactForm = {
+        const contact = {
             firstName: document.querySelector(".firstname").value,
             lastName: document.querySelector(".lastname").value,
             email: document.querySelector(".email").value,
@@ -133,7 +133,7 @@ const sendForm = () => {
         //Test toutes les valeurs du formulaire
 
         const testFirstName = () => {
-            let firstNameValue = contactForm.firstname
+            let firstNameValue = contact.firstName
 
             if (testStringWithSpecialCharacters(firstNameValue)) {
                 return true
@@ -143,7 +143,7 @@ const sendForm = () => {
         }
 
         const testLastName = () => {
-            let lastNameValue = contactForm.lastname
+            let lastNameValue = contact.lastName
 
             if (testStringWithSpecialCharacters(lastNameValue)) {
                 return true
@@ -153,7 +153,7 @@ const sendForm = () => {
         }
 
         const testEmail= () => {
-            let emailValue = contactForm.email
+            let emailValue = contact.email
 
             if (testEmailAdress(emailValue)) {
                 return true
@@ -163,9 +163,9 @@ const sendForm = () => {
         }
 
         const testAdress= () => {
-            let adressValue = contactForm.adress
+            let addressValue = contact.address
 
-            if (testStringWithNumbers(adressValue)) {
+            if (testStringWithNumbers(addressValue)) {
                 return true
             } else {
                 return false
@@ -173,7 +173,7 @@ const sendForm = () => {
         }
 
         const testCity= () => {
-            let cityValue = contactForm.city
+            let cityValue = contact.city
 
             if (testStringWithSpecialCharacters(cityValue)) {
                 return true
@@ -182,43 +182,39 @@ const sendForm = () => {
             }
         }
 
-        // Ajout 2 objets dans order 
-        let order = {
-            products: productLocalStorage,
-            contact: contactForm
-        }
-
         let formError = document.querySelector("#form_error")
 
         //Envoi l'objet du formulaire dans le localstorage si celui-ci est bien rempli & le converti en string
         if (testFirstName() && testLastName() && testEmail() && testAdress() && testCity()) {
-            // localStorage.setItem("contact", JSON.stringify(contactForm))
+            localStorage.setItem("contact", JSON.stringify(contact))
             formError.style.display = "none"
             //Envoi des données avec fetch() et la requête post vers (http://localhost:3000/api/cameras/order)
             let orderUrl = "http://localhost:3000/api/cameras/order"
 
-            localStorage.setItem("order", JSON.stringify(order))
+            let products = []
+
+            for (listId of productLocalStorage) {
+                products.push(listId.id)
+            }
 
             //Méthode "POST" avec fetch()
             fetch (orderUrl, {
                 method: "POST",
-                body: JSON.stringify(order),
+                body: JSON.stringify({contact, products}),
                 headers: {
                     "Accept" : "application/json",
                     "Content-Type" : "application/json",
                 },
-            }).then(function(response) {
-                console.log(response)
-            })
+            }).then((response) => response.json())
+              .then((data) => {
+                localStorage.setItem("order", JSON.stringify(data))
+                document.location.href = "order.html"
+                localStorage.removeItem("products")
+                localStorage.removeItem("contact")
+            }) 
             .catch(function(error){
-                console.log(error);
+                console.log("erreur: " + error);
             });
-
-
-
-            //Retire la key contact et products 
-            localStorage.removeItem("contact")
-            localStorage.removeItem("products")
 
         } else if (testFirstName() === false) {
             formError.style.display = "flex"
