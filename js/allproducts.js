@@ -57,9 +57,10 @@ const addCamerasInDom = (cameras) => {
     productTitle.textContent = camera.name
 
     //creer et ajoute les elements span dans chaque article
-    let productPrice = document.createElement("span")
-    productInfo.appendChild(productPrice)
+    let productMore = document.createElement("span")
+    productMore.classList.add("btn")
+    productInfo.appendChild(productMore)
     //ajoute le prix dans la balise span
-    productPrice.textContent = camera.price / 100 + "€"
+    productMore.textContent = "En savoir plus"
   }
 }
