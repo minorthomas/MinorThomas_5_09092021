@@ -13,7 +13,10 @@ const basketDom = () => {
     //Creation du si le localStorage est vide, affiché "panier vide" sinon afficher la boucle for et les articles
     if (productLocalStorage === null) {
         basketEmpty()
+        let form = document.querySelector("#form")
+        form.style.display = "none"
     } else {
+        form.style.display = "block"
         for (let i = 0; i < productLocalStorage.length; i++) {
             let basketArticle = document.createElement("article")
             document.querySelector("#basket_summary").appendChild(basketArticle)
