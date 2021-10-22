@@ -18,6 +18,7 @@
   border-radius: 1.2em;
   -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.15);
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
 }
 
 .product img {
@@ -44,6 +45,10 @@
   align-items: center;
   font-weight: bold;
   color: white;
+}
+
+.product:hover {
+  transform: scale(1.015);
 }
 
 @media only screen and (min-width: 768px) {
