@@ -1,0 +1,109 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Merriweather", serif;
+}
+
+#navbar,
+body {
+  background-color: rgb(240, 242, 255);
+}
+
+#body_separation {
+  content: "";
+  padding: 1.6em;
+  background-color: rgb(110, 118, 150);
+  margin: 0 0 3em 0;
+}
+
+main {
+  border: solid 0.15em rgb(230, 229, 229);
+  border-radius: 0.75em;
+  background-color: white;
+  margin-bottom: 2em;
+}
+
+#basket_summary {
+  padding: 1em;
+}
+
+#basket_summary article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.basket_products {
+  display: flex;
+  flex-direction: column;
+}
+
+#basket_footer {
+  color: white;
+}
+
+.basket_product_price,
+#basket_total_price {
+  font-weight: bold;
+}
+
+.basket_product_price,
+.basket_clean {
+  display: flex;
+  align-items: center;
+}
+
+.basket_total {
+  align-self: center;
+}
+
+#basket_footer {
+  background-color: rgb(110, 118, 150);
+  border: 0 solid transparent;
+  border-radius: 0 0 0.65em 0.65em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0.4em;
+}
+
+.product_separation {
+  content: "";
+  padding: 0.01em;
+  background-color: rgb(110, 118, 150);
+  margin-top: 0.4em;
+  margin-bottom: 0.7em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.btn {
+  background-color: rgb(110, 118, 150);
+  color: white;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+}
+
+#form_error {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  border: 0 solid transparent;
+  border-radius: 0.65em;
+  background-color: rgb(255, 137, 137);
+  color: white;
+  margin-bottom: 2em;
+  font-weight: bold;
+}
